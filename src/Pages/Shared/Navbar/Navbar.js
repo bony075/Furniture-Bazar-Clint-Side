@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import lgo from "../../../assets/lgo.png";
 import { AuthContext } from "../../../contexts/AuthProvider";
 const Navbar = () => {
-  const { user}= useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => { })
+      .catch(e => console.log(e));
+   }
   const menuItem = (
     <>
       <li>
@@ -20,7 +25,7 @@ const Navbar = () => {
       </li> */}
       {user?.uid ?
         <li>
-        <Link to="/login">LogOut</Link>
+        <button onClick={handleLogOut}>LogOut</button>
       </li>:
         <li>
         <Link to="/login">Login</Link>
