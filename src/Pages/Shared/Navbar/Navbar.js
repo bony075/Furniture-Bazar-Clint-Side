@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import lgo from "../../../assets/lgo.png";
+import { AuthContext } from "../../../contexts/AuthProvider";
 const Navbar = () => {
+  const { user}= useContext(AuthContext);
   const menuItem = (
     <>
       <li>
@@ -16,9 +18,13 @@ const Navbar = () => {
       {/* <li>
         <Link to="/"></Link>
       </li> */}
-      <li>
+      {user?.uid ?
+        <li>
+        <Link to="/login">LogOut</Link>
+      </li>:
+        <li>
         <Link to="/login">Login</Link>
-      </li>
+      </li>}
     </>
   );
   return (
