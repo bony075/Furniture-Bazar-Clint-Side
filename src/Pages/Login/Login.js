@@ -28,7 +28,7 @@ const Login = () => {
           <div className="card-body">
             <div className="flex justify-center items-center">
               <div className="w-96 p-7">
-                <h2 className="text-xl text-center">Login</h2>
+                {/* <h2 className="text-xl text-center">Login</h2> */}
                 <form onSubmit={handleSubmit(handleLogin)}>
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
@@ -57,7 +57,7 @@ const Login = () => {
                         required: "Password is required",
                         minLength: {
                           value: 6,
-                          message: "Password must be 6 characters or longer",
+                          message: "Password more then 6 characters",
                         },
                       })}
                       className="input input-bordered w-full max-w-xs"
@@ -68,7 +68,7 @@ const Login = () => {
                     )}
                   </div>
                   <input
-                    className="btn btn-accent w-full mt-2"
+                    className="btn btn-primary text-white w-full mt-2"
                     value="Login"
                     type="submit"
                   />
@@ -83,7 +83,7 @@ const Login = () => {
                   </Link>
                 </p>
                
-                <button className="btn btn-outline w-full mt-3">
+                <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full mt-3">
                   GOOGLE SIGN UP
                 </button>
               </div>
