@@ -21,7 +21,7 @@ const SignUp = () => {
           <div className="card-body">
             <div className=' flex justify-center items-center'>
               <div className='w-96 p-7'>
-                {/* <h2 className='text-xl text-center'>Sign Up</h2> */}
+
                 <form onSubmit={handleSubmit(handleSignUp)}>
                   <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Name</span></label>
@@ -42,16 +42,31 @@ const SignUp = () => {
                     <input type="password" {...register("password", {
                       required: "Password is required",
                       minLength: { value: 6, message: "Password more then 6 characters" },
-  
-                      
+
+
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                   </div>
+
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">User Type</span></label>
+
+                    <select {...register("usertype", {
+                      required: "Please select a user type",
+                    })} className="border p-3  rounded-md w-full max-w-xs">
+                      <option value="">Select...</option>
+                      <option value="seller">Seller</option>
+                      <option value="buyer">Buyer</option>
+                    </select>
+                    {errors.usertype && <p className='text-red-500'>{errors.usertype.message}</p>}
+                  </div>
+
+
                   <input className='btn btn-primary text-white w-full mt-4' value="Sign Up" type="submit" />
                   {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
-              
+
                 <button className='btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full'>SIGN IN WITH GOOGLE</button>
 
               </div>
