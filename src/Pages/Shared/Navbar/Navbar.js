@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import lgo from "../../../assets/lgo.png";
 const Navbar = () => {
   const menuItem = (
     <>
@@ -49,7 +49,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <img src="../../../../public/favicon.ico" alt="" srcset="" />
+          <img className="h-5/6" src={ lgo} alt="" srcset="" />
           Hot Sale
         </Link>
       </div>
