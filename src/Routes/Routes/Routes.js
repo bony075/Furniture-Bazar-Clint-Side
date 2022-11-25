@@ -5,6 +5,7 @@ import Blog from "../../Pages/Blog/Blog";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
       }
     ]
-  }
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
+  },
 ]);
 
 export default router;
