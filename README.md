@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-## Project Name: Cleaning Service
+## Project Name: HOT sale
 
 In the project directory, you can run:
 
@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Systems Functionality
 
-- Its a cleaning service related website where someone provide some services and user took services.
+- Its a HOT sale related website where someone provide some services and user took services.
 - Website contains navbar that is home, all service, blog, login and register.
   System remains Email and Google based authentication.
 - User can took a service and review that service.
