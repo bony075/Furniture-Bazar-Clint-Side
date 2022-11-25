@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-import toast  from 'react-hot-toast';
+import toast from 'react-hot-toast';
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
@@ -16,7 +16,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success('signup successful');
-      
+
         const userInfo = {
           displayName: data.name
         }
@@ -76,9 +76,9 @@ const SignUp = () => {
                     <select {...register("usertype", {
                       required: "Please select a user type",
                     })} className="border p-3  rounded-md w-full max-w-xs">
-                      <option value="">Select...</option>
-                      <option value="seller">Seller</option>
+
                       <option value="buyer">Buyer</option>
+                      <option value="seller">Seller</option>
                     </select>
                     {errors.usertype && <p className='text-red-500'>{errors.usertype.message}</p>}
                   </div>
