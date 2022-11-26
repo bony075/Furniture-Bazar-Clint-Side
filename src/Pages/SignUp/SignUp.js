@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
 
-  const [signUpError, setSignUPError] = useState('')
+  const [signUpError, setSignUPError] = useState('');
+  const navigate = useNavigate();
   const handleSignUp = (data) => {
     console.log(data);
     setSignUPError('');
@@ -23,6 +24,8 @@ const SignUp = () => {
         updateUser(userInfo)
           .then(() => { })
           .catch(e => console.log(e));
+        saveUser(data.name, data.email, data.usertype);
+        
 
       })
       .catch(e => {
@@ -30,6 +33,22 @@ const SignUp = () => {
         setSignUPError(e.message)
       });
   }
+
+
+  const saveUser = (name, email, usertype) => {
+    const user = { name, email, usertype };
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log("us: ",data);
+        navigate('/');
+    })
+    
+   }
 
 
   return (

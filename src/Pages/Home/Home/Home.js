@@ -40,7 +40,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="grid gap-3 col-span-3">
+        <div className="col-span-3">
           <Products></Products>
         {/* <div className="hero bg-orange-200 col-span-3"> */}
           {/* <div className="hero-content flex-col lg:flex-row-reverse">

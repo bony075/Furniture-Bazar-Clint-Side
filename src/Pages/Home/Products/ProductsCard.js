@@ -2,7 +2,7 @@
 import React from 'react';
 
 const ProductsCard = ({ product }) => {
-    console.log(product.name);
+  console.log(product.name);
   const {
     name,
     location,
@@ -20,6 +20,12 @@ const ProductsCard = ({ product }) => {
       {/* <figure>{image_url}</figure> */}
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
+        <p>Location: {location}</p>
+        <p>Original Price:${originalPrice}</p>
+        <p>Resale Price: ${resalePrice}</p>
+        <p>Years Of Use: {yearsOfUse} yr</p>
+        <p>Posted Date: {posted}</p>
+        <p>Seller: {seller}</p>
         <p>{details}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>

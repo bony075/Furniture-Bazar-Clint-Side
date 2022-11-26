@@ -4,6 +4,7 @@ import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../../Pages/Home/Home/Home";
+import Products from "../../Pages/Home/Products/Products";
 import Login from "../../Pages/Login/Login";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import SignUp from "../../Pages/SignUp/SignUp";
@@ -16,10 +17,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/product')
       },
       {
         path: "/category/:id",
         element: <Home></Home>,
+        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
       },
       {
         path: "/blog",
