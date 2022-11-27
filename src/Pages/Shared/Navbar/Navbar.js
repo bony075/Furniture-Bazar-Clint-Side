@@ -31,6 +31,7 @@ const Navbar = () => {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
+          <li> <p>{user?.displayName}</p></li>
           <li>
             <button onClick={handleLogOut}>LogOut</button>
           </li>
@@ -73,7 +74,7 @@ const Navbar = () => {
           Hot Sale
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex navbar-end">
+      <div className="navbar-center hidden lg:flex justify-between">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
       {/* <div className="navbar-end">

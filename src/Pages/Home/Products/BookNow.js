@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookNow = ({ singleProduct, setsingleProduct }) => {
-  const { name } = singleProduct;
+  const { name, resalePrice } = singleProduct;
+  
+  const { user } = useContext(AuthContext)
+  console.log("sdfdsfsd", singleProduct);
   const handleBooking = (event) => {
     event.preventDefault();
 
@@ -62,18 +66,21 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
             <input
               name="user"
               type="text"
+              defaultValue={user?.displayName} disabled
               placeholder="Your Name"
               className="input w-full input-bordered"
             />
             <input
               name="email"
               type="email"
+              defaultValue={user?.email} disabled
               placeholder="Email Address"
               className="input w-full input-bordered"
             />
             <input
               name="price"
               type="text"
+              defaultValue={resalePrice} disabled
               placeholder="price "
               className="input w-full input-bordered"
             />

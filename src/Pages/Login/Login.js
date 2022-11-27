@@ -1,16 +1,17 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, providerLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || '/';
 
-
+  
   const {
     register,
     formState: { errors },
@@ -32,6 +33,17 @@ const Login = () => {
         setLoginError(error.message);
       });
 
+  };
+  const googleProvider = new GoogleAuthProvider();
+
+  const handelGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((e) => console.error(e));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -103,7 +115,7 @@ const Login = () => {
                   </Link>
                 </p>
                
-                <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full mt-3">
+                <button onClick={handelGoogleSignIn} className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full mt-3">
                   GOOGLE SIGN UP
                 </button>
               </div>

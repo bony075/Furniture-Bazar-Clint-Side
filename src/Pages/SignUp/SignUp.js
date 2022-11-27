@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
+import { GoogleAuthProvider } from 'firebase/auth';
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, providerLogin } = useContext(AuthContext);
 
-  const [signUpError, setSignUPError] = useState('');
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  const [signUpError, setSignUPError] = useState('');
+
   const handleSignUp = (data) => {
     console.log(data);
     setSignUPError('');
@@ -25,7 +29,7 @@ const SignUp = () => {
           .then(() => { })
           .catch(e => console.log(e));
         saveUser(data.name, data.email, data.usertype);
-        
+
 
       })
       .catch(e => {
@@ -46,8 +50,8 @@ const SignUp = () => {
       .then(data => {
         // console.log("us: ",data);
         getUserTocken(email);
-    })
-    
+      })
+
   }
 
   const getUserTocken = email => {
@@ -57,13 +61,24 @@ const SignUp = () => {
         if (data.accessToken) {
           localStorage.setItem("accessToken", data.accessToken);
           navigate("/");
-        
-      }
-    })
+
+        }
+      })
   }
-  
 
 
+  const googleProvider = new GoogleAuthProvider();
+
+  const handelGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        saveUser(user.name, user.email, 'buyer');
+        navigate(from, { replace: true });
+      })
+      .catch((e) => console.error(e));
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -121,7 +136,7 @@ const SignUp = () => {
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
 
-                <button className='btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full'>SIGN IN WITH GOOGLE</button>
+                <button onClick={handelGoogleSignIn} className='btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full'>SIGN IN WITH GOOGLE</button>
 
               </div>
             </div>
