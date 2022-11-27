@@ -26,13 +26,20 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
         phone,
       location
     };
-
-    // TODO: send data to the server
-    // and once data is saved then close the modal
-    // and display success toast
-      toast.success('The item is booked!!');
-    console.log(booking);
-    setsingleProduct(null);
+    fetch('http://localhost:5000/bookedProduct', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(booking)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.acknowledged) {
+          
+          setsingleProduct(null);
+          toast.success('The item is booked!!');
+        }
+      })
   };
   return (
     <>
