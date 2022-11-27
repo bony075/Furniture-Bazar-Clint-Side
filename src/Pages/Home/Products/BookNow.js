@@ -1,9 +1,34 @@
-import React from 'react';
+import React from "react";
+import toast from "react-hot-toast";
 
-const BookNow = ({ singleProduct }) => {
-    const { name } = singleProduct;
+const BookNow = ({ singleProduct, setsingleProduct }) => {
+  const { name } = singleProduct;
   const handleBooking = (event) => {
     event.preventDefault();
+
+    const form = event.target;
+    // const slot = form.slot.value;
+    const user = form.user.value;
+    const email = form.email.value;
+    const price = form.price.value;
+    const phone = form.phone.value;
+    const location = form.location.value;
+    const booking = {
+      name,
+      user,
+    //   slot,
+        email,
+        price,
+        phone,
+      location
+    };
+
+    // TODO: send data to the server
+    // and once data is saved then close the modal
+    // and display success toast
+      toast.success('The item is booked!!');
+    console.log(booking);
+    setsingleProduct(null);
   };
   return (
     <>
@@ -35,7 +60,7 @@ const BookNow = ({ singleProduct }) => {
                 ))} */}
             </select>
             <input
-              name="name"
+              name="user"
               type="text"
               placeholder="Your Name"
               className="input w-full input-bordered"
@@ -47,9 +72,21 @@ const BookNow = ({ singleProduct }) => {
               className="input w-full input-bordered"
             />
             <input
+              name="price"
+              type="text"
+              placeholder="price "
+              className="input w-full input-bordered"
+            />
+            <input
               name="phone"
               type="text"
               placeholder="Phone Number"
+              className="input w-full input-bordered"
+            />
+            <input
+              name="location"
+              type="text"
+              placeholder="Address location "
               className="input w-full input-bordered"
             />
             <br />

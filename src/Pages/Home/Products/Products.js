@@ -35,8 +35,12 @@ const Products = () => {
             ></ProductsCard>
           ))}
         </div>
-        {singleProduct&&
-        <BookNow singleProduct={singleProduct}></BookNow>}
+        {singleProduct && (
+          <BookNow
+            singleProduct={singleProduct}
+            setsingleProduct={setsingleProduct}
+          ></BookNow>
+        )}
       </>
     );
 };
