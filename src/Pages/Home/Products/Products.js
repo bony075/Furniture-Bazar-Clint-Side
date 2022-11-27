@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookNow from './BookNow';
 import ProductsCard from './ProductsCard';
 // import {  useQuery} from '@tanstack/react-query'
 const Products = () => {
+  const [singleProduct, setsingleProduct] = useState(null);
   const Allproduct = useLoaderData();
     //  const uri = "http://localhost:5000/product";
     //  const { data: product=[]  } = useQuery({
@@ -23,11 +25,19 @@ const Products = () => {
     //    },
     //  });
     return (
-      <div className='grid gap-4'>
-        {Allproduct.map((p) => (
-          <ProductsCard key={p._id} product={p}></ProductsCard>
-        ))}
-      </div>
+      <>
+        <div className="grid gap-4">
+          {Allproduct.map((p) => (
+            <ProductsCard
+              key={p._id}
+              product={p}
+              setsingleProduct={setsingleProduct}
+            ></ProductsCard>
+          ))}
+        </div>
+        {singleProduct&&
+        <BookNow singleProduct={singleProduct}></BookNow>}
+      </>
     );
 };
 

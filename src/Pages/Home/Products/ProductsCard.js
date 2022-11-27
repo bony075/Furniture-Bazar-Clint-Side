@@ -1,7 +1,8 @@
 
 import React from 'react';
 
-const ProductsCard = ({ product }) => {
+
+const ProductsCard = ({ product, setsingleProduct }) => {
   console.log(product.name);
   const {
     name,
@@ -28,7 +29,16 @@ const ProductsCard = ({ product }) => {
         <p>Seller: {seller}</p>
         <p>{details}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          {/* <button className="btn btn-primary">Buy Now</button> */}
+          <label
+            // disabled={slots.length === 0}
+            htmlFor="booking-modal"
+            className="btn btn-primary text-white"
+            // onClick={() => setTreatment(appointmentOption)}
+            onClick={() => setsingleProduct(product)}
+          >
+            Book NOW
+          </label>
         </div>
       </div>
     </div>
