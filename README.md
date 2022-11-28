@@ -7,7 +7,7 @@ In the project directory, you can run:
 ### `LIVE WEBSITE LINK`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://resale-store-77d0f.web.app/](https://resale-store-77d0f.web.app/) to view it in your browser.
 
 ### Systems Functionality
 
@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 #### Client side:
 
 - react
-* react hook form
+- react hook form
 - react router
 - tailwind css
 - daisy UI
