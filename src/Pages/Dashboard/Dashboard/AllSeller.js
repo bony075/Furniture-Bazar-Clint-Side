@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query'
 const AllSeller = () => {
-    const { data: users = []  } = useQuery({
+    const { data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allSeller');
+            const res = await fetch('https://resell-server-side-bony075.vercel.app/allSeller');
             const data = await res.json();
             return data;
         }
@@ -32,7 +32,7 @@ const AllSeller = () => {
                                 <td>{user.email}</td>
                                 <td>{user.usertype}</td>
                                 {/* <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>*/}
-                                <td><button className='btn btn-xs btn-danger'>Delete</button></td> 
+                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
 

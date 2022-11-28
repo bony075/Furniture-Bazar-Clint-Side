@@ -5,13 +5,13 @@ const AllBuyer = () => {
     const { data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allbuyer');
+            const res = await fetch('https://resell-server-side-bony075.vercel.app/allbuyer');
             const data = await res.json();
             return data;
         }
     });
     // const handleMakeVerify = id => {
-    //     fetch(`http://localhost:5000/users/verify/${id}`, {
+    //     fetch(`https://resell-server-side-bony075.vercel.app/users/verify/${id}`, {
     //         method: 'PUT',
     //         // headers: {
     //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -49,8 +49,8 @@ const AllBuyer = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.usertype}</td>
-                               {/*  <td>{user?.usertype !== 'verify' && <button onClick={() => handleMakeVerify(user._id)} className='btn btn-xs btn-primary'>Make Verify</button>}</td> */}
-                                <td><button className='btn btn-xs btn-danger'>Delete</button></td> 
+                                {/*  <td>{user?.usertype !== 'verify' && <button onClick={() => handleMakeVerify(user._id)} className='btn btn-xs btn-primary'>Make Verify</button>}</td> */}
+                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
 

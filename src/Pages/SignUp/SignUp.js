@@ -47,7 +47,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, usertype) => {
     const user = { name, email, usertype };
-    fetch('http://localhost:5000/users', {
+    fetch('https://resell-server-side-bony075.vercel.app/users', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(user)
@@ -62,7 +62,7 @@ const SignUp = () => {
   }
 
   const getUserTocken = email => {
-    fetch(`http://localhost:5000/jwt?email=${email}`)
+    fetch(`https://resell-server-side-bony075.vercel.app/jwt?email=${email}`)
       .then(res => res.json())
       .then(data => {
         if (data.accessToken) {
@@ -70,8 +70,8 @@ const SignUp = () => {
           navigate("/");
 
 
-  }
-})
+        }
+      })
   }
 
   const googleProvider = new GoogleAuthProvider();

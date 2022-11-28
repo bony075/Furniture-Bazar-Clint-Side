@@ -4,7 +4,7 @@ import Banner from "../Banner/Banner";
 import { useQuery } from '@tanstack/react-query'
 import Products from "../Products/Products";
 const Home = () => {
-  const uri = 'http://localhost:5000/categoryCollection';
+  const uri = 'https://resell-server-side-bony075.vercel.app/categoryCollection';
   // const [category,setCategory] =useState([]);
   // useEffect(() => { 
   //   fetch(uri)

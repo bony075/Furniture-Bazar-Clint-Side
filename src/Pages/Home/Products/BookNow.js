@@ -26,7 +26,7 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
       phone,
       location
     };
-    fetch('http://localhost:5000/bookedProduct', {
+    fetch('https://resell-server-side-bony075.vercel.app/bookedProduct', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(booking)
