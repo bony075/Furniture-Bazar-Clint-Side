@@ -4,7 +4,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookNow = ({ singleProduct, setsingleProduct }) => {
   const { name, resalePrice } = singleProduct;
-  
+
   const { user } = useContext(AuthContext)
   console.log("sdfdsfsd", singleProduct);
   const handleBooking = (event) => {
@@ -20,10 +20,10 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
     const booking = {
       name,
       user,
-    //   slot,
-        email,
-        price,
-        phone,
+      //   slot,
+      email,
+      price,
+      phone,
       location
     };
     fetch('http://localhost:5000/bookedProduct', {
@@ -35,7 +35,7 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
       .then(data => {
         console.log(data);
         if (data.acknowledged) {
-          
+
           setsingleProduct(null);
           toast.success('The item is booked!!');
         }

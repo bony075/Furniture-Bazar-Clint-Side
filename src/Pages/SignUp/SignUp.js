@@ -4,20 +4,20 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import { GoogleAuthProvider } from 'firebase/auth';
-import useToken from '../../hook/useToken';
+// import useToken from '../../hook/useToken';
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { createUser, updateUser, providerLogin } = useContext(AuthContext);
-  const [createdUserEmail, setCreatedUserEmail] = useState("");
-  const [token] = useToken(createdUserEmail);
+  // const [createdUserEmail, setCreatedUserEmail] = useState("");
+  // const [token] = useToken(createdUserEmail);
 
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
   const [signUpError, setSignUPError] = useState('');
-   if (token) {
-     navigate("/");
-   }
+  // if (token) {
+  //   navigate("/");
+  // }
 
   const handleSignUp = (data) => {
     console.log(data);
@@ -49,17 +49,30 @@ const SignUp = () => {
     const user = { name, email, usertype };
     fetch('http://localhost:5000/users', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(user)
     })
       .then(res => res.json())
       .then(data => {
         // console.log("us: ",data);
-        setCreatedUserEmail(email);
+        // setCreatedUserEmail(email);
+        getUserTocken(email);
       })
 
   }
 
+  const getUserTocken = email => {
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.accessToken) {
+          localStorage.setItem("accessToken", data.accessToken);
+          navigate("/");
+
+
+  }
+})
+  }
 
   const googleProvider = new GoogleAuthProvider();
 

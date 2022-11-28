@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Banner from "../Banner/Banner";
-import { useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import Products from "../Products/Products";
 const Home = () => {
   const uri = 'http://localhost:5000/categoryCollection';
@@ -12,9 +12,9 @@ const Home = () => {
   //   .then(data =>setCategory(data) )
   // },[])
 
-  const { data: category =[] } = useQuery({
+  const { data: category = [] } = useQuery({
     queryKey: ['category'],
-    queryFn: async () => { 
+    queryFn: async () => {
       const res = await fetch(uri);
       const data = await res.json();
       return data;
@@ -42,7 +42,7 @@ const Home = () => {
 
         <div className="col-span-3">
           <Products></Products>
-        {/* <div className="hero bg-orange-200 col-span-3"> */}
+          {/* <div className="hero bg-orange-200 col-span-3"> */}
           {/* <div className="hero-content flex-col lg:flex-row-reverse">
             <img src="" className="" alt="" />
             <div>
