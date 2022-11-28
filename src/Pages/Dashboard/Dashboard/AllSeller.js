@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query'
-const AllUser = () => {
+const AllSeller = () => {
     const { data: users = []  } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -43,4 +43,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default AllSeller;

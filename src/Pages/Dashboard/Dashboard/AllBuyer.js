@@ -1,6 +1,7 @@
 import React from 'react';
+// import toast from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query'
-const AllUser = () => {
+const AllBuyer = () => {
     const { data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -9,6 +10,22 @@ const AllUser = () => {
             return data;
         }
     });
+    // const handleMakeVerify = id => {
+    //     fetch(`http://localhost:5000/users/verify/${id}`, {
+    //         method: 'PUT',
+    //         // headers: {
+    //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //         // }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             if (data.modifiedCount > 0) {
+    //                 toast.success(' Verify successful.')
+    //                 refetch();
+    //             }
+    //         })
+    // }
 
     return (
         <div>
@@ -21,6 +38,7 @@ const AllUser = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>User Type</th>
+                            {/* <th>Verify</th> */}
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -31,7 +49,7 @@ const AllUser = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.usertype}</td>
-                                {/* <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>*/}
+                               {/*  <td>{user?.usertype !== 'verify' && <button onClick={() => handleMakeVerify(user._id)} className='btn btn-xs btn-primary'>Make Verify</button>}</td> */}
                                 <td><button className='btn btn-xs btn-danger'>Delete</button></td> 
                             </tr>)
                         }
@@ -43,4 +61,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default AllBuyer;
