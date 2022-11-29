@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import BookNow from './BookNow';
-import ProductsCard from './ProductsCard';
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import BookNow from "./BookNow";
+import ProductsCard from "./ProductsCard";
 // import {  useQuery} from '@tanstack/react-query'
 const Products = () => {
   const [singleProduct, setsingleProduct] = useState(null);
   const Allproduct = useLoaderData();
-  //  const uri = "https://resell-server-side-bony075.vercel.app/product";
+  //  const uri = "http://localhost:5000/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
   //    queryFn: async () => {
@@ -15,7 +15,7 @@ const Products = () => {
   //      return data;
   //    },
   //  });
-  //  const uri = "https://resell-server-side-bony075.vercel.app/product";
+  //  const uri = "http://localhost:5000/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
   //    queryFn: async () => {
@@ -27,13 +27,15 @@ const Products = () => {
   return (
     <>
       <div className="grid gap-4">
-        {Allproduct.map((p) => (
-          <ProductsCard
-            key={p._id}
-            product={p}
-            setsingleProduct={setsingleProduct}
-          ></ProductsCard>
-        ))}
+        {Allproduct.slice(0)
+          .reverse()
+          .map((p) => (
+            <ProductsCard
+              key={p._id}
+              product={p}
+              setsingleProduct={setsingleProduct}
+            ></ProductsCard>
+          ))}
       </div>
       {singleProduct && (
         <BookNow

@@ -1,25 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Banner from "../Banner/Banner";
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from "@tanstack/react-query";
 import Products from "../Products/Products";
 const Home = () => {
-  const uri = 'https://resell-server-side-bony075.vercel.app/categoryCollection';
+  const uri = "http://localhost:5000/categoryCollection";
   // const [category,setCategory] =useState([]);
-  // useEffect(() => { 
+  // useEffect(() => {
   //   fetch(uri)
   //     .then(res => res.json())
   //   .then(data =>setCategory(data) )
   // },[])
 
   const { data: category = [] } = useQuery({
-    queryKey: ['category'],
+    queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(uri);
       const data = await res.json();
       return data;
-    }
-  })
+    },
+  });
 
   return (
     <>
@@ -29,14 +29,15 @@ const Home = () => {
           <h1 className="text-4xl font-bold mb-6">Category</h1>
 
           <div className="flex flex-col gap-2">
-            {
-              category.map(ct => <Link className="btn btn-primary" to={`/category/${ct.category_id}`}
+            {category.map((ct) => (
+              <Link
+                className="btn btn-primary"
+                to={`/category/${ct.category_id}`}
                 key={ct._id}
               >
                 {ct.name}
-              </Link>)
-            }
-
+              </Link>
+            ))}
           </div>
         </div>
 

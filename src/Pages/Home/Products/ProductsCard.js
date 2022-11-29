@@ -18,7 +18,9 @@ const ProductsCard = ({ product, setsingleProduct }) => {
 
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl">
-      {/* <figure>{image_url}</figure> */}
+      <figure className='w-3/5'>
+        <img src={image_url} alt="" srcset="" />
+      </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p>Location: {location}</p>
@@ -34,7 +36,6 @@ const ProductsCard = ({ product, setsingleProduct }) => {
             // disabled={slots.length === 0}
             htmlFor="booking-modal"
             className="btn btn-primary text-white"
-            // onClick={() => setTreatment(appointmentOption)}
             onClick={() => setsingleProduct(product)}
           >
             Book NOW

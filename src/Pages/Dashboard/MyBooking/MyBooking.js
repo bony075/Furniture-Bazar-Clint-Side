@@ -1,11 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider';
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const MyBooking = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `https://resell-server-side-bony075.vercel.app/bookedProduct?email=${user?.email}`;
+  const url = `http://localhost:5000/bookedProduct?email=${user?.email}`;
 
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],
@@ -19,9 +19,6 @@ const MyBooking = () => {
       return data;
     },
   });
-
-
-
 
   return (
     <div>
@@ -38,7 +35,7 @@ const MyBooking = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, i) => (
+            {bookings?.map((booking, i) => (
               <tr key={booking._id}>
                 <th>{i + 1}</th>
                 <td>{booking.user}</td>

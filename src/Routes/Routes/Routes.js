@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../layout/DashboardLayout";
 import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
+import AddProduct from "../../Pages/Dashboard/Dashboard/AddProduct";
 import AllBuyer from "../../Pages/Dashboard/Dashboard/AllBuyer";
 import AllSeller from "../../Pages/Dashboard/Dashboard/AllSeller";
 import MyBooking from "../../Pages/Dashboard/MyBooking/MyBooking";
@@ -18,12 +19,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('https://resell-server-side-bony075.vercel.app/product')
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/category/:id",
         element: <Home></Home>,
-        loader: ({ params }) => fetch(`https://resell-server-side-bony075.vercel.app/category/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.id}`),
       },
       {
         path: "/blog",
@@ -42,7 +44,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
@@ -56,7 +62,11 @@ const router = createBrowserRouter([
         path: "/dashboard/allSeller",
         element: <AllSeller></AllSeller>,
       },
-    ]
+      {
+        path: "/dashboard/addproduct",
+        element: <AddProduct></AddProduct>,
+      },
+    ],
   },
   {
     path: "*",

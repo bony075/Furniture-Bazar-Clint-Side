@@ -5,7 +5,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 const BookNow = ({ singleProduct, setsingleProduct }) => {
   const { name, resalePrice } = singleProduct;
 
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   console.log("sdfdsfsd", singleProduct);
   const handleBooking = (event) => {
     event.preventDefault();
@@ -24,22 +24,21 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
       email,
       price,
       phone,
-      location
+      location,
     };
-    fetch('https://resell-server-side-bony075.vercel.app/bookedProduct', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(booking)
+    fetch("http://localhost:5000/bookedProduct", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(booking),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-
           setsingleProduct(null);
-          toast.success('The item is booked!!');
+          toast.success("The item is booked!!");
         }
-      })
+      });
   };
   return (
     <>
@@ -73,21 +72,24 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
             <input
               name="user"
               type="text"
-              defaultValue={user?.displayName} disabled
+              defaultValue={user?.displayName}
+              disabled
               placeholder="Your Name"
               className="input w-full input-bordered"
             />
             <input
               name="email"
               type="email"
-              defaultValue={user?.email} disabled
+              defaultValue={user?.email}
+              disabled
               placeholder="Email Address"
               className="input w-full input-bordered"
             />
             <input
               name="price"
               type="text"
-              defaultValue={resalePrice} disabled
+              defaultValue={resalePrice}
+              disabled
               placeholder="price "
               className="input w-full input-bordered"
             />

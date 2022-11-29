@@ -6,9 +6,9 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
-      .catch(e => console.log(e));
-   }
+      .then(() => {})
+      .catch((e) => console.log(e));
+  };
   const menuItem = (
     <>
       <li>
@@ -26,20 +26,24 @@ const Navbar = () => {
       {/* <li>
         <Link to="/"></Link>
       </li> */}
-      {user?.uid ?
+      {user?.uid ? (
         <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <li> <p>{user?.displayName}</p></li>
+          <li>
+            {" "}
+            <p>{user?.displayName}</p>
+          </li>
           <li>
             <button onClick={handleLogOut}>LogOut</button>
           </li>
         </>
-          :
+      ) : (
         <li>
-        <Link to="/login">Login</Link>
-      </li>}
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -70,7 +74,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <img className="h-5/6" src={ lgo} alt="" srcset="" />
+          <img className="h-5/6" src={lgo} alt="" srcset="" />
           Hot Sale
         </Link>
       </div>
@@ -80,11 +84,27 @@ const Navbar = () => {
       {/* <div className="navbar-end">
           <Link to="/" className="btn">Get started</Link>
         </div> */}
-      <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      <label
+        htmlFor="dashboard-drawer"
+        tabIndex={2}
+        className="btn btn-ghost lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
       </label>
     </div>
-    
   );
 };
 
