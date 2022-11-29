@@ -1,26 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import { useQuery } from "@tanstack/react-query";
 import Products from "../Products/Products";
 import { FaChair, FaLeaf, FaTree } from 'react-icons/fa';
+import axios from "axios";
 const Home = () => {
   const uri = "https://resell-server-side-bony075.vercel.app/categoryCollection";
-  // const [category,setCategory] =useState([]);
+  const [category, setCategory] = useState([]);
   // useEffect(() => {
   //   fetch(uri)
   //     .then(res => res.json())
   //   .then(data =>setCategory(data) )
   // },[])
 
-  const { data: category = [] } = useQuery({
-    queryKey: ["category"],
-    queryFn: async () => {
-      const res = await fetch(uri);
-      const data = await res.json();
-      return data;
-    },
-  });
+
+  useEffect(() => {
+    axios.get(uri)
+      .then(data => setCategory(data.data))
+  }, [])
+
+
+
+  // const { data: category = [] } = useQuery({
+  //   queryKey: ["category"],
+  //   queryFn: async () => {
+  //     const res = await fetch(uri);
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
 
   return (
     <>

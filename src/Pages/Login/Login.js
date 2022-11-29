@@ -9,15 +9,15 @@ import { AuthContext } from "../../contexts/AuthProvider";
 const Login = () => {
   const { signIn, providerLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
-      // const [loginUserEmail, setLoginUserEmail] = useState("");
-      // const [token] = useToken(loginUserEmail);
+  // const [loginUserEmail, setLoginUserEmail] = useState("");
+  // const [token] = useToken(loginUserEmail);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || '/';
 
-    //  if (token) {
-    //    navigate(from, { replace: true });
-    //  }
+  //  if (token) {
+  //    navigate(from, { replace: true });
+  //  }
 
   const {
     register,
@@ -34,8 +34,8 @@ const Login = () => {
         console.log(user);
         toast.success('Login successful');
         navigate(from, { replace: true });
-      //  setLoginUserEmail(data.email);
-       
+        //  setLoginUserEmail(data.email);
+
       })
       .catch(error => {
         console.log(error.message)
@@ -45,11 +45,32 @@ const Login = () => {
   };
   const googleProvider = new GoogleAuthProvider();
 
+
+
+  const saveUser = (name, email, usertype) => {
+    const user = { name, email, usertype };
+    fetch("https://resell-server-side-bony075.vercel.app/users", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("us: ",data);
+        // setCreatedUserEmail(email);
+        // getUserTocken(email);
+      });
+  };
   const handelGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
+
+
+
+
+        saveUser(user.name, user.email, "buyer");
         navigate(from, { replace: true });
       })
       .catch((e) => console.error(e));
@@ -59,9 +80,9 @@ const Login = () => {
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold ">Login now!</h1>
-         
+
           <figure><img className="lg:py-6 w-1/2 lg:w-full" src="https://safekaro.com/images/login.png" alt="" srcset="" /></figure>
-         
+
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
@@ -121,7 +142,7 @@ const Login = () => {
                     Sign Up here
                   </Link>
                 </p>
-               
+
                 <button onClick={handelGoogleSignIn} className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full mt-3">
                   GOOGLE LOGIN
                 </button>
