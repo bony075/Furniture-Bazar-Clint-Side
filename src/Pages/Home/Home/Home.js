@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Products from "../Products/Products";
 import { FaChair, FaLeaf, FaTree } from 'react-icons/fa';
 const Home = () => {
-  const uri = "http://localhost:5000/categoryCollection";
+  const uri = "https://resell-server-side-bony075.vercel.app/categoryCollection";
   // const [category,setCategory] =useState([]);
   // useEffect(() => {
   //   fetch(uri)
@@ -47,14 +47,14 @@ const Home = () => {
 
         <div className="col-span-3">
           <Products></Products>
-      
+
         </div>
       </div>
 
 
       <div className="card lg:card-side bg-base-200 lg:p-48 mt-10">
         <div className="card-body">
-          <h2 className="card-title lg:text-4xl font-extrabold">We Provide You The<br/> Best Experience</h2>
+          <h2 className="card-title lg:text-4xl font-extrabold">We Provide You The<br /> Best Experience</h2>
           <p className="text-xl">Urna molestie at elementum eu facilisis. Venenatis a the inner condimentum vitae sapien pellentesque.</p>
           {/* <div className="card-actions justify-end">
             <button className="btn btn-primary">Listen</button>
@@ -65,7 +65,7 @@ const Home = () => {
 
         </div>
         <figure><img src="https://newexsoft.com/demo/html/furio/assets/img/about.png" alt="Album" /></figure>
-       
+
       </div>
     </>
   );

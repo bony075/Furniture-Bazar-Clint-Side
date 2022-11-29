@@ -10,9 +10,9 @@ const MyProduct = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/myProduct?seller=${user?.displayName}`;
+    const url = `https://resell-server-side-bony075.vercel.app/myProduct?seller=${user?.displayName}`;
 
-    const { data: myProduct = [] } = useQuery({ 
+    const { data: myProduct = [] } = useQuery({
         queryKey: ["myProduct", user?.displayName],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -50,16 +50,16 @@ const MyProduct = () => {
                                         <img src={booking.image_url} alt="" />
                                     </div>
                                 </div></td>
-                                
-                                
+
+
                                 <td>{booking.name}</td>
                                 <td>{booking.resalePrice}</td>
                                 <td><button className="btn btn-outline">Available</button></td>
                                 <td><button className="btn btn-warning">DELETE</button></td>
-                                
-                                
+
+
                             </tr>
-                       
+
                         ))}
                     </tbody>
                 </table>

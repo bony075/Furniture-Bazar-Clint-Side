@@ -18,7 +18,7 @@ const AddProduct = () => {
   const { data: ctproduct, isLoading } = useQuery({
     queryKey: ["ctproduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categoryCollection");
+      const res = await fetch("https://resell-server-side-bony075.vercel.app/categoryCollection");
       const data = await res.json();
       return data;
     },
@@ -60,7 +60,7 @@ const AddProduct = () => {
           };
 
 
-          fetch("http://localhost:5000/product", {
+          fetch("https://resell-server-side-bony075.vercel.app/product", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -224,11 +224,11 @@ const AddProduct = () => {
             {...register("details")}
             className="select input-bordered w-full max-w-xs"
           >
-           
-              <option  value='Excellent'>Excellent</option>
-              <option  value='Good'>Good</option>
-              <option  value='Fair'>Fair</option>
-     
+
+            <option value='Excellent'>Excellent</option>
+            <option value='Good'>Good</option>
+            <option value='Fair'>Fair</option>
+
           </select>
 
           {errors.details && (

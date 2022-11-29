@@ -4,7 +4,7 @@ const AllSeller = () => {
     const { data: users = [] } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allSeller");
+            const res = await fetch("https://resell-server-side-bony075.vercel.app/allSeller");
             const data = await res.json();
             return data;
         },

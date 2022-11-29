@@ -1,8 +1,10 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaCartPlus } from "react-icons/fa";
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const ProductsCard = ({ product, setsingleProduct }) => {
+  const { user } = useContext(AuthContext);
   console.log(product.name);
   const {
     name,
@@ -31,15 +33,17 @@ const ProductsCard = ({ product, setsingleProduct }) => {
         <p>Seller: {seller}</p>
         <p>Condition: {details}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-outline"><FaCartPlus className='mr-2'/> WishList</button>
-          <label
-            
-            htmlFor="booking-modal"
-            className="btn btn-primary text-white"
-            onClick={() => setsingleProduct(product)}
-          >
-            Book NOW
-          </label>
+          {user?.uid && <>
+            <button className="btn btn-outline"><FaCartPlus className='mr-2' /> WishList</button>
+            <label
+
+              htmlFor="booking-modal"
+              className="btn btn-primary text-white"
+              onClick={() => setsingleProduct(product)}
+            >
+              Book NOW
+            </label>
+          </>}
         </div>
       </div>
     </div>

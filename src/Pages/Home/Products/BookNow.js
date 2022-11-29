@@ -28,8 +28,8 @@ const BookNow = ({ Allproduct, singleProduct, setsingleProduct }) => {
       phone,
       location,
     };
-    console.log('taerdrf asdas',booking);
-    fetch("http://localhost:5000/bookedProduct", {
+    console.log('taerdrf asdas', booking);
+    fetch("https://resell-server-side-bony075.vercel.app/bookedProduct", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(booking),

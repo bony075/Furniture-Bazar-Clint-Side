@@ -48,7 +48,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, usertype) => {
     const user = { name, email, usertype };
-    fetch("http://localhost:5000/users", {
+    fetch("https://resell-server-side-bony075.vercel.app/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   const getUserTocken = (email) => {
-    fetch(`http://localhost:5000/jwt?email=${email}`)
+    fetch(`https://resell-server-side-bony075.vercel.app/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.accessToken) {
@@ -89,7 +89,7 @@ const SignUp = () => {
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           {/* <h1 className="text-5xl font-bold">SIGN UP</h1> */}
-          <img className="w-1/2 lg:w-full" src="https://cdn-icons-png.flaticon.com/512/5455/5455877.png" alt=""/>
+          <img className="w-1/2 lg:w-full" src="https://cdn-icons-png.flaticon.com/512/5455/5455877.png" alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+
 import BookNow from "./BookNow";
 import ProductsCard from "./ProductsCard";
 // import {  useQuery} from '@tanstack/react-query'
 const Products = () => {
+
   const [singleProduct, setsingleProduct] = useState(null);
   const Allproduct = useLoaderData();
-  console.log('alllprooodrfe ',Allproduct);
-  //  const uri = "http://localhost:5000/product";
+  console.log('alllprooodrfe ', Allproduct);
+  //  const uri = "https://resell-server-side-bony075.vercel.app/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
   //    queryFn: async () => {
@@ -16,7 +18,7 @@ const Products = () => {
   //      return data;
   //    },
   //  });
-  //  const uri = "http://localhost:5000/product";
+  //  const uri = "https://resell-server-side-bony075.vercel.app/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
   //    queryFn: async () => {
@@ -44,7 +46,7 @@ const Products = () => {
           singleProduct={singleProduct}
           setsingleProduct={setsingleProduct}
         >
-          
+
         </BookNow>
       )}
     </>
