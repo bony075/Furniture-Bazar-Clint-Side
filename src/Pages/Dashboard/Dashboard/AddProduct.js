@@ -1,17 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const AddProduct = () => {
+  const { user } = useContext(AuthContext)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const imageKey = process.env.REACT_APP_imgbb_KEY;
- const navigate = useNavigate();
+  console.log(imageKey);
+  const navigate = useNavigate();
   const { data: ctproduct, isLoading } = useQuery({
     queryKey: ["ctproduct"],
     queryFn: async () => {
@@ -49,14 +52,14 @@ const AddProduct = () => {
 
             posted: data.posted,
 
-            seller: data.seller,
+            seller: user?.displayName,
 
             image_url: imgData.data.url,
 
             details: data.details,
           };
 
-     
+
           fetch("http://localhost:5000/product", {
             method: "POST",
             headers: {
@@ -69,7 +72,7 @@ const AddProduct = () => {
             .then((result) => {
               console.log(result);
               toast.success(`${data.name} is added successfully`);
-                 navigate("/");
+              navigate("/");
             });
         }
       });
@@ -81,7 +84,7 @@ const AddProduct = () => {
       <form onSubmit={handleSubmit(handleAddProduct)}>
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">Name</span>
+            <span className="label-text">Product Name</span>
           </label>
           <input
             type="text"
@@ -173,9 +176,9 @@ const AddProduct = () => {
           </label>
           <input
             type="text"
-            {...register("seller", {
-              required: true,
-            })}
+            defaultValue={user?.displayName}
+            disabled
+            {...register("seller", {})}
             className="input input-bordered w-full max-w-xs"
           />
           {errors.seller && (
@@ -215,13 +218,19 @@ const AddProduct = () => {
           <label className="label">
             <span className="label-text">Details</span>
           </label>
-          <input
-            type="text"
-            {...register("details", {
-              required: true,
-            })}
-            className="input input-bordered w-full max-w-xs"
-          />
+
+
+          <select
+            {...register("details")}
+            className="select input-bordered w-full max-w-xs"
+          >
+           
+              <option  value='Excellent'>Excellent</option>
+              <option  value='Good'>Good</option>
+              <option  value='Fair'>Fair</option>
+     
+          </select>
+
           {errors.details && (
             <p className="text-red-500">{errors.details.message}</p>
           )}

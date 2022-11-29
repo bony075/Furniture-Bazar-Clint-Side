@@ -15,13 +15,13 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/myproduct">My product</Link>
+        {/* <Link to="/myproduct">My product</Link> */}
       </li>
       <li>
         <Link to="/blog">Blog</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        {/* <Link to="/about">About</Link> */}
       </li>
       {/* <li>
         <Link to="/"></Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           <img className="h-5/6" src={lgo} alt="" srcset="" />
-          Hot Sale
+          Furniture Bazar
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex justify-between">
@@ -84,26 +84,28 @@ const Navbar = () => {
       {/* <div className="navbar-end">
           <Link to="/" className="btn">Get started</Link>
         </div> */}
-      <label
-        htmlFor="dashboard-drawer"
-        tabIndex={2}
-        className="btn btn-ghost lg:hidden"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      {user?.uid &&
+        <label
+          htmlFor="dashboard-drawer"
+          tabIndex={2}
+          className="btn btn-ghost lg:hidden navbar-end"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h8m-8 6h16"
-          />
-        </svg>
-      </label>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
+      }
     </div>
   );
 };

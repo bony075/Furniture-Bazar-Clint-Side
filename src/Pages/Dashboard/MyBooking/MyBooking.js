@@ -22,26 +22,32 @@ const MyBooking = () => {
 
   return (
     <div>
-      <h3 className="text-3xl mb-5">My Booking</h3>
+      <h3 className="text-3xl mb-5">My Orders</h3>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
+              <th>Image</th>
               <th>Product</th>
-              <th>phone</th>
               <th>price</th>
+              <th>Payment</th>
             </tr>
           </thead>
           <tbody>
             {bookings?.map((booking, i) => (
               <tr key={booking._id}>
                 <th>{i + 1}</th>
-                <td>{booking.user}</td>
+                <td><div className="avatar">
+                  <div className="w-24 rounded-xl">
+                    <img src={booking.image_url} alt=""/>
+                  </div>
+                </div></td>
                 <td>{booking.name}</td>
-                <td>{booking.phone}</td>
+                
+                {/* <td>{booking.phone}</td> */}
                 <td>{booking.price}</td>
+                <td><button className="btn btn-outline">Pay</button></td>
               </tr>
             ))}
           </tbody>

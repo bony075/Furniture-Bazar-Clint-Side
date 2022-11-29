@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import { useQuery } from "@tanstack/react-query";
 import Products from "../Products/Products";
+import { FaChair, FaLeaf, FaTree } from 'react-icons/fa';
 const Home = () => {
   const uri = "http://localhost:5000/categoryCollection";
   // const [category,setCategory] =useState([]);
@@ -23,13 +24,16 @@ const Home = () => {
 
   return (
     <>
-      <Banner></Banner>
-      <div className="grid grid-cols-4 container mx-auto mt-12">
+      <div className="lg:h-96">
+        <Banner></Banner>
+      </div>
+
+      <div className="grid lg:grid-cols-4 container mx-auto mt-12">
         <div className="col-span-1 p-6">
           <h1 className="text-4xl font-bold mb-6">Category</h1>
 
           <div className="flex flex-col gap-2">
-            {category.map((ct) => (
+            {category?.map((ct) => (
               <Link
                 className="btn btn-primary"
                 to={`/category/${ct.category_id}`}
@@ -43,21 +47,25 @@ const Home = () => {
 
         <div className="col-span-3">
           <Products></Products>
-          {/* <div className="hero bg-orange-200 col-span-3"> */}
-          {/* <div className="hero-content flex-col lg:flex-row-reverse">
-            <img src="" className="" alt="" />
-            <div>
-              <h1 className="text-5xl font-bold">demo</h1>
-              <p className="py-6">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Fugit, iste.
-              </p>
-              <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white">
-                Get Started
-              </button>
-            </div>
-          </div> */}
+      
         </div>
+      </div>
+
+
+      <div className="card lg:card-side bg-base-200 lg:p-48 mt-10">
+        <div className="card-body">
+          <h2 className="card-title lg:text-4xl font-extrabold">We Provide You The<br/> Best Experience</h2>
+          <p className="text-xl">Urna molestie at elementum eu facilisis. Venenatis a the inner condimentum vitae sapien pellentesque.</p>
+          {/* <div className="card-actions justify-end">
+            <button className="btn btn-primary">Listen</button>
+          </div> */}
+          <p className="lg:text-2xl flex"><FaChair />Minimalist Design</p>
+          <p className="lg:text-2xl flex"><FaLeaf />Natural Product</p>
+          <p className="lg:text-2xl flex items-center"><FaTree />Best Quality Wood</p>
+
+        </div>
+        <figure><img src="https://newexsoft.com/demo/html/furio/assets/img/about.png" alt="Album" /></figure>
+       
       </div>
     </>
   );

@@ -60,7 +60,7 @@ const Login = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold ">Login now!</h1>
          
-          <figure><img className="py-6" src="https://safekaro.com/images/login.png" alt="" srcset="" /></figure>
+          <figure><img className="lg:py-6 w-1/2 lg:w-full" src="https://safekaro.com/images/login.png" alt="" srcset="" /></figure>
          
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

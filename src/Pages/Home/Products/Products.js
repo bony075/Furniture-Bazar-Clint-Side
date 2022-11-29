@@ -6,6 +6,7 @@ import ProductsCard from "./ProductsCard";
 const Products = () => {
   const [singleProduct, setsingleProduct] = useState(null);
   const Allproduct = useLoaderData();
+  console.log('alllprooodrfe ',Allproduct);
   //  const uri = "http://localhost:5000/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
@@ -27,7 +28,7 @@ const Products = () => {
   return (
     <>
       <div className="grid gap-4">
-        {Allproduct.slice(0)
+        {Allproduct?.slice(0)
           .reverse()
           .map((p) => (
             <ProductsCard
@@ -39,9 +40,12 @@ const Products = () => {
       </div>
       {singleProduct && (
         <BookNow
+          Allproduct={Allproduct}
           singleProduct={singleProduct}
           setsingleProduct={setsingleProduct}
-        ></BookNow>
+        >
+          
+        </BookNow>
       )}
     </>
   );

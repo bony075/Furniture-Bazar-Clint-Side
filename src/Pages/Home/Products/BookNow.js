@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
-const BookNow = ({ singleProduct, setsingleProduct }) => {
+const BookNow = ({ Allproduct, singleProduct, setsingleProduct }) => {
   const { name, resalePrice } = singleProduct;
 
   const { user } = useContext(AuthContext);
   console.log("sdfdsfsd", singleProduct);
+  console.log("bookalpererkj ", Allproduct);
   const handleBooking = (event) => {
     event.preventDefault();
 
@@ -20,12 +21,14 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
     const booking = {
       name,
       user,
+      image_url: Allproduct[0].image_url,
       //   slot,
       email,
       price,
       phone,
       location,
     };
+    console.log('taerdrf asdas',booking);
     fetch("http://localhost:5000/bookedProduct", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -56,19 +59,19 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
             onSubmit={handleBooking}
             className="grid grid-cols-1 gap-3 mt-10"
           >
-            <input
+            {/* <input
               type="text"
               disabled
               // value={date}
               className="input w-full input-bordered "
-            />
-            <select name="slot" className="select select-bordered w-full">
-              {/* {slots.map((slot, i) => (
+            /> */}
+            {/* <select name="slot" className="select select-bordered w-full">
+              {slots.map((slot, i) => (
                   <option value={slot} key={i}>
                     {slot}
                   </option>
-                ))} */}
-            </select>
+                ))}
+            </select> */}
             <input
               name="user"
               type="text"
@@ -102,7 +105,7 @@ const BookNow = ({ singleProduct, setsingleProduct }) => {
             <input
               name="location"
               type="text"
-              placeholder="Address location "
+              placeholder=" Meeting Address "
               className="input w-full input-bordered"
             />
             <br />

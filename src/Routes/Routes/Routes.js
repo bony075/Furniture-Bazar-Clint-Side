@@ -5,6 +5,7 @@ import Blog from "../../Pages/Blog/Blog";
 import AddProduct from "../../Pages/Dashboard/Dashboard/AddProduct";
 import AllBuyer from "../../Pages/Dashboard/Dashboard/AllBuyer";
 import AllSeller from "../../Pages/Dashboard/Dashboard/AllSeller";
+import MyProduct from "../../Pages/Dashboard/Dashboard/MyProduct";
 import MyBooking from "../../Pages/Dashboard/MyBooking/MyBooking";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
+        path: "/dashboard/myBooking",
         element: <MyBooking></MyBooking>,
       },
       {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/addproduct",
         element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/dashboard/myProduct",
+        element: <MyProduct></MyProduct>,
       },
     ],
   },
