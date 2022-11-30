@@ -19,6 +19,7 @@ Open [https://resale-store-77d0f.web.app/](https://resale-store-77d0f.web.app/) 
 
 - react
 - react hook form
+- axios 
 - react router
 - tailwind css
 - daisy UI
