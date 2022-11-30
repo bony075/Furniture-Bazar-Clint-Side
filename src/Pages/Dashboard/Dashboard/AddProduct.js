@@ -18,7 +18,7 @@ const AddProduct = () => {
   const { data: ctproduct, isLoading } = useQuery({
     queryKey: ["ctproduct"],
     queryFn: async () => {
-      const res = await fetch("https://resell-server-side-bony075.vercel.app/categoryCollection");
+      const res = await fetch("http://localhost:5000/categoryCollection");
       const data = await res.json();
       return data;
     },
@@ -60,7 +60,7 @@ const AddProduct = () => {
           };
 
 
-          fetch("https://resell-server-side-bony075.vercel.app/product", {
+          fetch("http://localhost:5000/product", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -48,7 +48,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, usertype) => {
     const user = { name, email, usertype };
-    fetch("https://resell-server-side-bony075.vercel.app/users", {
+    fetch("http://localhost:5000/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   const getUserTocken = (email) => {
-    fetch(`https://resell-server-side-bony075.vercel.app/jwt?email=${email}`)
+    fetch(`http://localhost:5000/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.accessToken) {

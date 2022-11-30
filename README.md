@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-## Project Name: HOT sale
+## Project Name: Furniture Bazar
 
 In the project directory, you can run:
 

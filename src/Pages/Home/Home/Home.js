@@ -6,7 +6,7 @@ import Products from "../Products/Products";
 import { FaChair, FaLeaf, FaTree } from 'react-icons/fa';
 import axios from "axios";
 const Home = () => {
-  const uri = "https://resell-server-side-bony075.vercel.app/categoryCollection";
+  const uri = "http://localhost:5000/categoryCollection";
   const [category, setCategory] = useState([]);
   // useEffect(() => {
   //   fetch(uri)

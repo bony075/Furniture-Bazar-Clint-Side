@@ -49,7 +49,7 @@ const Login = () => {
 
   const saveUser = (name, email, usertype) => {
     const user = { name, email, usertype };
-    fetch("https://resell-server-side-bony075.vercel.app/users", {
+    fetch("http://localhost:5000/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),

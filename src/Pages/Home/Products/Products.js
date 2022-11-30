@@ -9,7 +9,7 @@ const Products = () => {
   const [singleProduct, setsingleProduct] = useState(null);
   const Allproduct = useLoaderData();
   console.log('alllprooodrfe ', Allproduct);
-  //  const uri = "https://resell-server-side-bony075.vercel.app/product";
+  //  const uri = "http://localhost:5000/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
   //    queryFn: async () => {
@@ -18,7 +18,7 @@ const Products = () => {
   //      return data;
   //    },
   //  });
-  //  const uri = "https://resell-server-side-bony075.vercel.app/product";
+  //  const uri = "http://localhost:5000/product";
   //  const { data: product=[]  } = useQuery({
   //    queryKey: ["product"],
   //    queryFn: async () => {

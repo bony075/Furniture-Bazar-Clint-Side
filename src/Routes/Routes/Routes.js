@@ -20,13 +20,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://resell-server-side-bony075.vercel.app/product"),
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/category/:id",
         element: <PrivateRoute><Home></Home></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`https://resell-server-side-bony075.vercel.app/category/${params.id}`),
+          fetch(`http://localhost:5000/category/${params.id}`),
       },
       {
         path: "/blog",

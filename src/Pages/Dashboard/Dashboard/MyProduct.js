@@ -10,7 +10,7 @@ const MyProduct = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `https://resell-server-side-bony075.vercel.app/myProduct?seller=${user?.displayName}`;
+    const url = `http://localhost:5000/myProduct?seller=${user?.displayName}`;
 
     const { data: myProduct = [] } = useQuery({
         queryKey: ["myProduct", user?.displayName],

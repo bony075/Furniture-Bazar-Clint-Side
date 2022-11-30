@@ -1,17 +1,25 @@
-import React from "react";
-// import toast from 'react-hot-toast';
+import React, { useState } from "react";
+import toast from 'react-hot-toast';
 import { useQuery } from "@tanstack/react-query";
+import DeleteModal from "../../Shared/DeleteModal/DeleteModal";
 const AllBuyer = () => {
-    const { data: users = [] } = useQuery({
+    const [deleteBuyer, setDeleteBuyer] = useState(null);
+    const closeModal = () => {
+        setDeleteBuyer(null);
+    }
+
+
+
+    const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const res = await fetch("https://resell-server-side-bony075.vercel.app/allbuyer");
+            const res = await fetch("http://localhost:5000/allbuyer");
             const data = await res.json();
             return data;
         },
     });
     // const handleMakeVerify = id => {
-    //     fetch(`https://resell-server-side-bony075.vercel.app/users/verify/${id}`, {
+    //     fetch(`http://localhost:5000/users/verify/${id}`, {
     //         method: 'PUT',
     //         // headers: {
     //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -26,6 +34,27 @@ const AllBuyer = () => {
     //             }
     //         })
     // }
+
+    const handleDeleteBuyer = buyer => {
+        fetch(`http://localhost:5000/users/${buyer._id}`, {
+            method: 'DELETE',
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`buyer ${buyer.name} deleted successfully`)
+                }
+            })
+        console.log(buyer);
+    }
+
+
+
+
 
     return (
         <div>
@@ -51,13 +80,24 @@ const AllBuyer = () => {
                                 <td>{user.usertype}</td>
                                 {/*  <td>{user?.usertype !== 'verify' && <button onClick={() => handleMakeVerify(user._id)} className='btn btn-xs btn-primary'>Make Verify</button>}</td> */}
                                 <td>
-                                    <button className="btn btn-xs btn-danger">Delete</button>
+                                    {/* <button className="btn btn-xs btn-danger">Delete</button> */}
+                                    <label onClick={() => setDeleteBuyer(user)} htmlFor="delete-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+            {
+                deleteBuyer &&
+                <DeleteModal
+                    title={`Are you sure you want to delete?`}
+                    message={`You delete ${deleteBuyer.name}. It cannot be Recover.`}
+                    successAction={handleDeleteBuyer}
+                    successButtonName="Delete"
+                    modalData={deleteBuyer}
+                    closeModal={closeModal}
+                ></DeleteModal>}
         </div>
     );
 };
